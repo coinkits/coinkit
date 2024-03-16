@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import * as ethers from 'ethers';
+import copy from 'copy-to-clipboard';
 
 interface Wallet {
   address: string;
@@ -24,8 +25,8 @@ export default function Page(): React.JSX.Element {
   const [wallet, setWallet] = React.useState<Wallet[]>([]);
   const createWallet = () => {
     const { address, privateKey, mnemonic } = ethers.Wallet.createRandom();
-    setWallet([{ address, privateKey, mnemonic: mnemonic?.phrase }, ...wallet]);
-    console.warn({ address, privateKey, mnemonic: mnemonic?.phrase });
+    // setWallet([{ address, privateKey, mnemonic: mnemonic?.phrase }, ...wallet]);
+    copy(JSON.stringify({ address, privateKey, mnemonic: mnemonic?.phrase }));
   };
   return (
     <Stack spacing={3}>
