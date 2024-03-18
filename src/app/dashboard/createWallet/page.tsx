@@ -25,6 +25,7 @@ export default function Page(): React.JSX.Element {
   const [wallet, setWallet] = React.useState<Wallet[]>([]);
   const createWallet = () => {
     const { address, privateKey, mnemonic } = ethers.Wallet.createRandom();
+    setWallet([])
     // setWallet([{ address, privateKey, mnemonic: mnemonic?.phrase }, ...wallet]);
     copy(JSON.stringify({ address, privateKey, mnemonic: mnemonic?.phrase }));
   };
